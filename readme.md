@@ -5,14 +5,14 @@ Browse, rate and comment on your favorite films. Made with Express and React.
 ## Dev Setup
 
 ```
-    npm i && npm i --prefix client // install dependencies
-    npm run dev // run dev servers
+    npm i && npm i --prefix client
+    npm run dev
 ```
 
 ## Run on in Production
 
 ```
-    npm i && npm run deploy // installs dependencies and starts server.js
+    npm i && npm run deploy
 ```
 
 ## Run using PM2
