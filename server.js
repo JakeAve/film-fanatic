@@ -13,6 +13,10 @@ app.use('/api/film', require('./routes/film'));
 
 // Static Assets
 if (process.env.NODE_ENV === 'production') {
+  // google auth verification
+  app.get('/googled38baa3422c3d065.html', (req, res) =>
+    res.send(`google-site-verification: googled38baa3422c3d065.html`),
+  );
   // set static folder
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
