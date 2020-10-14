@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Login from './Login';
 
-export default function Navbar() {
+export default function Navbar(props) {
+  const { onLoginChange } = props;
   return (
     <nav>
       <Link className="home-link" to={'/'}>
@@ -9,12 +11,7 @@ export default function Navbar() {
       </Link>
       <ul>
         <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/register" className="register">
-            Register
-          </Link>
+          <Login onLoginChange={onLoginChange} />
         </li>
       </ul>
     </nav>

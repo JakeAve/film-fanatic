@@ -30,6 +30,10 @@ const FilmSchema = new mongoose.Schema({
       user: {
         type: mongoose.Schema.Types.ObjectId,
       },
+      userId: {
+        type: String,
+        required: true,
+      },
       text: {
         type: String,
         required: true,
@@ -61,5 +65,11 @@ const filmValidation = [
   body('comments').isArray().optional(),
 ];
 
+const commentValidation = [
+  body('text').notEmpty().isString(),
+  body('fanaticRating').notEmpty().isInt({ min: 0, max: 12 }),
+  body('userId').notEmpty(),
+];
+
 const Film = mongoose.model('film', FilmSchema);
-module.exports = { Film, filmValidation };
+module.exports = { Film, filmValidation, commentValidation };

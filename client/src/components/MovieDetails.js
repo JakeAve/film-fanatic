@@ -7,7 +7,6 @@ export default function MovieDetails(props) {
     genres = [],
     fanaticRating,
     releaseDate,
-    comments = [],
     image = {},
   } = props;
   const { url: imgURL } = image;
@@ -23,7 +22,7 @@ export default function MovieDetails(props) {
         </span>
         <span className="genres">{genres.join(', ')}</span>
       </div>
-      <img src={imgURL} />
+      <img src={imgURL} alt={title + ' poster'} />
     </div>
   );
 }

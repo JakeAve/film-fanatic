@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { validationResult } = require('express-validator');
 
-const { Film, filmValidation } = require('../models/Film');
+const { Film, filmValidation, commentValidation } = require('../models/Film');
 
 const fourHundo = (response, ...errors) =>
   response.status(400).json({ errors: [...errors] });
@@ -70,6 +70,30 @@ router.post('/title/:id', filmValidation, async (req, res) => {
       returnOriginal: false,
     });
     if (!film) return res.status(404).send('Not Found');
+    res.send(film);
+  } catch (err) {
+    fiveHundo(res, err);
+  }
+});
+
+router.post('/title/:id/new-comment', commentValidation, async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) return fourHundo(res, errors.array());
+
+    const id = `/title/${req.params.id}/`;
+    const film = await Film.findOne({ id });
+    if (!film) return res.status(404).send('Not Found');
+    console.log(req.body);
+    film.comments.push(req.body);
+    film.fanaticRating = (
+      film.comments.reduce(
+        (sum, { fanaticRating }) => sum + Number(fanaticRating),
+        0,
+      ) / film.comments.length
+    ).toFixed(2);
+
+    await film.save();
     res.send(film);
   } catch (err) {
     fiveHundo(res, err);

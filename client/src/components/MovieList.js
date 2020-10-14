@@ -8,7 +8,7 @@ export default function MovieList(props) {
   function movieDetails(movie) {
     const {
       title,
-      fanaticScore,
+      fanaticRating,
       releaseDate,
       plots = [],
       _id,
@@ -24,7 +24,7 @@ export default function MovieList(props) {
               {new Date(releaseDate).toLocaleDateString()}
             </span>
             <span className="fanatic-score">
-              Fanatic Score: {fanaticScore || 'N / A'}
+              Fanatic Rating: {fanaticRating || 'N / A'}
             </span>
             <span className="plot">
               {plots.length ? plots[0]?.text || '' : ''}

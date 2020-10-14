@@ -3,6 +3,7 @@
   --light-text: #f5f5f5;
   --accent-1: #1674c7;
   --accent-2: #ffa500;
+  --grey: #f1f1f1;
 }
 
 main {
@@ -104,5 +105,73 @@ nav {
   }
   & img {
     max-height: 80vh;
+  }
+}
+
+.new-comment {
+  display: grid;
+  gap: 1rem;
+  .fanatic-rating {
+    font-weight: bold;
+    font-family: 'Voltaire';
+    font-size: 2rem;
+  }
+  & label {
+    display: grid;
+    justify-content: stretch;
+  }
+  & input,
+  & textarea {
+    margin: 1rem 0;
+  }
+  & input {
+    cursor: pointer;
+  }
+  & textarea {
+    height: 5rem;
+    resize: none;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+  & button {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+  }
+}
+
+.comments {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  & .comment-container {
+    margin: 1.5rem 0;
+    background-color: var(--grey);
+    border-radius: 20px;
+    padding: 1rem;
+    display: grid;
+    grid-template: auto / 5rem 10rem auto;
+  }
+  & .comment-meta {
+    display: grid;
+    justify-items: center;
+    align-content: start;
+  }
+  .comment-avatar {
+    width: 75%;
+    border-radius: 50%;
+  }
+  .comment-name {
+    font-weight: bold;
+    text-align: center;
+  }
+  .fanatic-rating {
+    justify-self: center;
+    align-self: center;
+    font-weight: bold;
+    font-family: 'Voltaire';
+    font-size: 2rem;
+  }
+  .comment-text {
+    margin: 0;
   }
 }
